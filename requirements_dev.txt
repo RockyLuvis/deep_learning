@@ -1,0 +1,21 @@
+bentoml #
+#torchvision   # Pytorch module
+joblib # 
+tqdm # progress bar for process for visualization
+pip-chill # Automatically it will give specific version, if we want specific version of a library, it will match version of python with needed library version
+wincertstore # To store certpip 
+
+dvc #Data management
+mlflow #for tracking the changes in model and corresponding tests
+ipykernel
+pandas
+numpy
+seaborn #
+
+pytest == 7.1.3 #used for writing tests
+tox == 3.25.1  #Provides envirnmonet to write test
+flake8 == 5.0.4 # For checking if program is written as per protocol
+black == 22.8.0 # for linting
+mypy == 0.971
+
+#-e . # for local deployment
