@@ -19,3 +19,4 @@ black == 22.8.0 # for linting
 mypy == 0.971
 
 #-e . # for local deployment
+
