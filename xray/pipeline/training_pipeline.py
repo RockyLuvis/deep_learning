@@ -22,10 +22,19 @@ class TrainPipeline:
             data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
 
             logging.info ("Completed Data ingestion")
-            
+
             return data_ingestion_artifact
 
 
+        except XRayException as e:
+            raise XRayException (e, sys)
+    
+    def run_pipeline(self) -> None:
+        logging.info(" Entered the run_pipeline")
+
+        try:
+            data_ingestion_artifact: DataIngestionArtifact = self.start_data_ingestion()
+        
         except XRayException as e:
             raise XRayException (e, sys)
 
