@@ -30,17 +30,17 @@ class DataIngestion:
     def initiate_data_ingestion(self) -> DataIngestionArtifact:
 
         logging.info( 
-            "Started Data ingestion"
+            "initiate_data_ingestion:Started Data ingestion"
         )
         try:
 
-            self.get_data_from_s3()
+            #self.get_data_from_s3()
             data_ingestion_artifact: DataIngestionArtifact = DataIngestionArtifact(
                 train_file_path = self.data_ingestion_config.train_data_path,
                 test_file_path = self.data_ingestion_config.test_data_path
             )
 
-            logging.info("Completed Data ingestion")
+            logging.info("initiate_data_ingestion:Completed Data ingestion")
             
             return data_ingestion_artifact
         
