@@ -173,7 +173,7 @@ class DataTransformation:
                 test_transform_file_path=self.data_transformation_config.test_transforms_file,
             )
             logging.info(
-                f"initiate_data_transformation: train_transform_file_path = {train_transform_file_path},test_transform_file_path={test_transform_file_path}"
+                f"initiate_data_transformation: train_transform_file_path = train_transform_file_path,test_transform_file_path=test_transform_file_path"
             )
             logging.info(
                 "initiate_data_transformation:Completed data_transformation method of Data transformation class"
