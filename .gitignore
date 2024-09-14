@@ -9,7 +9,8 @@ __pycache__/
 ./env/
 venv/
 ENV
-
+logs
+artifacts
 
 # Distribution / packaging
 .Python
