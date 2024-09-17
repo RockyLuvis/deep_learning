@@ -165,6 +165,9 @@ class DataTransformation:
             train_loader, test_loader = self.data_loader(
                 train_transform=train_transform, test_transform=test_transform
             )
+            
+            train_transform_file_path=self.data_transformation_config.train_transforms_file,
+            test_transform_file_path=self.data_transformation_config.test_transforms_file,
 
             data_transformation_artifact: DataTransformationArtifact = DataTransformationArtifact(
                 transformed_train_object=train_loader,
@@ -173,8 +176,10 @@ class DataTransformation:
                 test_transform_file_path=self.data_transformation_config.test_transforms_file,
             )
             logging.info(
-                f"initiate_data_transformation: train_transform_file_path = train_transform_file_path,test_transform_file_path=test_transform_file_path"
+                "initiate_data_transformation: train_transform_file_path = {},test_transform_file_path= {}".format( train_transform_file_path, test_transform_file_path )
             )
+
+
             logging.info(
                 "initiate_data_transformation:Completed data_transformation method of Data transformation class"
             )

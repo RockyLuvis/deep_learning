@@ -70,7 +70,7 @@ class ModelTrainerConfig:
 
         self.trained_bentoml_model_name: str = "xray_model"
 
-        self.trained_model_path: int = os.path.join(
+        self.trained_model_path: int = os.path.join( #xray_model.pt is the name of the model
             self.artifact_dir, TRAINED_MODEL_NAME
         )
 

@@ -39,11 +39,24 @@ PIN_MEMORY: bool = True
 TRAINED_MODEL_DIR: str = "trained_model"
 TRAINED_MODEL_NAME: str = "cvmodel.pt"
 
-DEVICE: torch.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DEVICE: torch.device = torch.device("cuda" if torch.cuda.is_available() else "cpu") # If GPU (CUDA) is available then use 
+#GPU or else choose CPU , hence these are needed.
 
 STEP_SIZE: int = 6
 GAMMA: int = 0.5
-EPOCH: int = 1
+EPOCH: int = 1 # Choosen one for POC, but for real usecase use min 1000 and see accuracy and loss
+
+"""
+In the context of model training, an epoch refers to one complete cycle 
+through the entire training dataset. During an epoch, the model processes every sample in the dataset exactly once.
+
+Here's what happens during an epoch:
+Data Pass: All data points in the training set are passed through the model.
+Weights Update: After processing each batch of data, the model's weights are 
+updated based on the gradients computed by the loss function.
+Multiple Epochs: Generally, you don't train a model for just one epoch. 
+Instead, you train for multiple epochs to allow the model to progressively improve its predictions by adjusting its weights.
+"""
 
 BENTOML_MODEL_NAME: str = "xray_model"
 BENTOML_SERVICE_NAME: str = "xray_service"
