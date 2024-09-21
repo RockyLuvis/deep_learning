@@ -1,3 +1,12 @@
+'''
+Functional Pipeline vs Sequential pipeline
+
+Here we are creating Functional pipeline
+A functional pipeline refers to a series of 
+steps where each step takes an input, processes it, 
+and then passes it to the next step in the pipeline, often in a declarative, functional programming style.
+'''
+
 import sys
 from xray.entity.config_entity import (
     DataIngestionConfig,
