@@ -19,6 +19,7 @@ Prepare Model Trainer configuration:
 '''
 
 import os
+import sys
 from dataclasses import dataclass
 
 import bentoml
@@ -84,21 +85,21 @@ class ModelTrainer:
                 data, target = data.to(DEVICE), target.to(DEVICE)
 
                 # Initialization of gradient
-                optimizer.zero_grad()  #Back propogation step
+                optimizer.zero_grad()  #Clear Old gradients
 
                 # In PyTorch, gradient is accumulated over backprop and even though thats used in RNN generally not used in CNN
                 # or specific requirements
                 ## prediction on data
 
-                y_pred = self.model(data)
+                y_pred = self.model(data) # This step is called forward pass, we predict in this step.
 
-                # Calculating loss given the prediction
+                # Calculating loss given the prediction,, Loss is Actual vs predicted loss.
                 loss = F.nll_loss(y_pred, target)
 
-                # Backprop
-                loss.backward()
+                # Backpropogate to calculate gradient, 
+                loss.backward() # This step calculates gradients with respects to the current weight.
 
-                optimizer.step() #Back propagation
+                optimizer.step() # Update weights using the newly calcuated gradients so predicted is closer to the actual.
 
                 # get the index of the log-probability corresponding to the max value
                 pred = y_pred.argmax(dim=1, keepdim=True)
@@ -222,7 +223,7 @@ class ModelTrainer:
             os.makedirs(self.model_trainer_config.artifact_dir, exist_ok=True)
 
             torch.save(model, self.model_trainer_config.trained_model_path)
-            os.system(f"cp {self.model_trainer_config.trained_model_path} model/")
+            #os.system(f"cp {self.model_trainer_config.trained_model_path} model/")
 
             train_transforms_obj = joblib.load(
                 self.data_transformation_artifact.train_transform_file_path
