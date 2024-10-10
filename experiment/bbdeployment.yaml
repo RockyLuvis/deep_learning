@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bbox
+  namespace: bbbox
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: bbox
+  template:
+    metadata: 
+      labels:
+        name: bbox
+    spec:
+      containers:
+      - name: test-bbbox
+        image: busybox:latest
+
+    

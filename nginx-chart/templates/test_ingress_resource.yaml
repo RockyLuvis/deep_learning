@@ -1,0 +1,39 @@
+version: v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-ingress-resource
+  annotations:
+    # Instructs the ingress controller to use the specified ACM certificate
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:region:account-id:certificate/xxxx-xxxx-xxxx-xxxx
+    # Specifies the SSL policy for the ALB
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS-1-2-2017-01
+    # Instructs the ingress to create an HTTPS listener on ALB
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+spec:
+  
+  tls:
+  - hosts:
+      - test.example.com
+      secretName : arn:aws:acm:region:account-id:certificate/xxxx-xxxx-xxxx-xxxx
+  rules:
+  - host: test.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+          service:
+            name: test-service
+            port:
+              number: 443
+
+  - host: test1.example.com
+    http:
+      paths:
+      - path: /order
+        pathTypes: Prefix
+          service:
+            name: order-service
+            port:
+              number: 443
+
+

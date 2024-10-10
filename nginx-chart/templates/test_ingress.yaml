@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ingress
+metadata:
+  name: nginx-ingress
+  labels:
+    app:: {{ .Release.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.name }}
+  Template:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchdulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: subnet
+              operator: In
+              values:
+              - subnet1
+              - subnet2
+    tls:
+    - hosts:
+      - test.example.com
+      secretName: tls-secret
+      
+    
+    rules:
+    - host: test.example.com
+      https:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: my-app-service
+              port:
+                number: 80
+    spec:
+      containers:
+      - name: nginx-ingress-controller
+        image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.34.1
+
+
+
+

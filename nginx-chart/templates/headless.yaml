@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fluentd-logging
+  labels:
+    app: fluentd-elasticsearch
+spec:
+  clusterIP: None  # This makes it headless
+  selector:
+    app: fluentd-elasticsearch
+  ports:
+    - port: 24224  # Fluentd listening port
+      name: fluentd-port

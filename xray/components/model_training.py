@@ -81,6 +81,19 @@ class ModelTrainer:
 
             processed = 0
 
+            '''
+            Gradient Calculation and Weight Update (Training Stage):
+            Zero Gradients: optimizer.zero_grad() ensures that previous gradients are cleared so they don't accumulate.
+            Forward Pass: y_pred = self.model(data) performs the prediction.
+            Loss Calculation: loss = F.nll_loss(y_pred, target) calculates the difference between predictions (y_pred) and actual targets (target).
+            Backpropagation: loss.backward() computes gradients with respect to the model's weights based on the loss.
+            Weight Update: optimizer.step() updates the model's weights using the computed gradients, 
+            moving the model's predictions closer to the actual target in future iterations.
+            Training Steps:
+            Input Data: data, target = data.to(DEVICE), target.to(DEVICE) loads a batch of data and target labels.
+            Clear Old Gradients: optimizer.zero_grad()
+
+            '''
             for batch_idx, (data, target) in enumerate(pbar): # in the loop , take data, train and calculate loss and perform back propagation
                 data, target = data.to(DEVICE), target.to(DEVICE)
 

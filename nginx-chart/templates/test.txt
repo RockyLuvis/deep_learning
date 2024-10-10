@@ -1,0 +1,91 @@
+How do you collaborate with development, operations, and security teams to ensure smooth deployments and maintain service reliability? 
+
+To maintain Service reliabiilty, I have done the following to increase the system uptime, reduce errors, reduce MTBF, and work with SLAs to address MTTR and availability, scalabilities of the system
+
+I engaged in a meeting on a regular cadence with Security auditors to address the security checklist (which comprises of front end security such as AuthN/AuthZ, network security, application security etc), 
+providing them testimonials so that system is secure consers are addressed. I have collarobared with DevOps/Software dev teams to incorporated SAST scanning using Jenkins,SonarQube,BlackDuck, snyk scanning, various 
+secure artifactories to store images and artifacts, incorporated secure configuration management within the team. I have worked with solution architects to build highly available, 
+resilent, auto scaling and fault tolerant systems both in cloud and onpremise. I have also worked with SRE teams to develop SRE workflow,develop strong monitoring, logging system, 
+both using applicaiton level monitoring and infrastructure monitoring. I have worked very closely with developers, engineers, testers, QA coching them, mentoring them, giving both technical and process guidence.
+As a result, I was able to double the code coverage results, I was able to balance conflicting priorities that arise due to production support/maintainace and long term project deliverables.
+
+Can you walk me through how you conduct a post-incident review and what steps you take to prevent similar incidents in the future? 
+
+Recently, I was faced with a production incident which affected several backend applications, the issue got escalated immediately and I was asked to join the 
+esclation call. I joined the incident management call and got briefed on the issue.
+I also asked what the  end user was doing that triggered the failure to get a clear context of the failure, 
+quickly started looking at the logs for failure messages. Once I understood the problem I started collected the logs from our monitoring systems, splunk for application 
+monitoring, new relic for infrastructure monitoring and cloud watch, cloud trail for APIs. I searched the logs to figure out the components that was failing,
+once I got a grasp of the failure and component, I I setup an intenal war room, comprising of the concerned developers. I described the problem to them, We debugged the code further to localized the issue, 
+We worked out a solution and I asked them to work on a hot fix. Also, at the same time, I updated management about the progress we have made so far and provided them an ETA. 
+I also asked the dev team to increase more error handling, add more logging or a solutions that would prevent the failure.
+In the mean time I asked supporting team such as DevOps Engineer and QA tester to join the call and I explained the problem and asked them to be ready for
+ deployment and testing in Dev, SIT and STAGING and for production deployment. Once I got approvals from QA and SRE testing, I proceeded to get approvals from security 
+and CAB for emergency deployment into production.
+After the issue was resolved I setup a blameless
+retrospection with the team and we discussed hot prevent this in the future, I also asked them to increase more error handling, 
+more tests, add more logging or a solutions that would prevent the failure. I put together a RCA report for the management and our long term strategy to prevent
+such failures. Thus I have handled high pressure situation without blames and workout a strategy to prevent future failures.
+
+As an SRE/DevOps manager, how do you decide which tools (e.g., Jenkins, SonarQube, BlackDuck) to integrate into your pipeline?
+ What criteria do you use to evaluate and implement new tools?
+
+In my previous work places, I have setup an ARB which is an Advisory board to the developer and an approval authority and I have chaired the board.
+Also, the purpose of the board is to standardize tool chains across the organizaiton, such that tools meet function and non functional requirements
+along with lowering the operational cost. I have worked with the Enterprise architecture team to understand the SLAs and the error budgets that I can work with.
+The selection of the toolchain happens based on durablity it provides, wheather it is open source so cost can be reduced, what APIs it provides, 
+one pane of glass, security it provides
+
+Incident Management:
+
+How do you use SRE metrics like MTTR (Mean Time to Recovery) and MTBF (Mean Time Between Failures) to improve the reliability of services? Can you describe an incident where you used these metrics to guide improvements?
+In my last client engagement with Verizon, there was failure in the gateway system that I was managing, it affected multiple backend applications and the problem got escalated very quickly. I was called into the escalation call
+I was briefed about the failure, I tried to understand what the end user was doing that triggered the failure and in the mean time started to collect the failure logs from the logging and monitoring system 
+( application log splunk log/New Relic Infra log and AWS cloud watch/trail). As per of SOW we have different categories of SLAs defined for MTTR and since this was a P1 issue, I had to act fast to get my team into an internal war room
+I called the developers from the area where the failure had occured and briefed them about the trigger and discussed a solution with them. I asked to work on the hot fix
+in the mean time I called the QA, DevOps engineers to join the call, and briefed them about the issue, I asked them to prepare for deployment and QA testing, in Integration and staging env. 
+I also started putting an email together to provide an update to stakeholders about the progress we have made and gave them an ETA. 
+Once the issue is resolved, I setup a retrospection with developers to discuss a strategy on how to prevent this in the future, 
+adding more input validation, more error handling, more logging information, more testcases so we dont get into the issue in the future. 
+In order to address MTBF and hence higher uptime or availability, I have planned right from the requirement collection time, understanding our allowed error budget, 
+identifying risks during system architecture design, and furuther translatig them to meaningful stories and working with developers and tester to makesure that we meet the SLA. Providing 
+test environments to testers so they can test independently and not blocked on time, enhancing code coverage, test coverage, I have double the code coverage in my projects, and reduced the chance of failure to nearly 90%
+I have also incorporated HA strategy, Scaling and fault tolerance strategies, Database proxies, secure SSO, JWT token, AuthN/AuthZ strategies, APIGEE interfaces,
+ robust logging and monitoring architecture and notification stategies in my design and development. Hence increased the uptime. I have also published design documents on confluence 
+ and got by in from Security auditors, Enterprise architects team for the system design and meeting the MTBF SLAs.
+
+
+Capacity Planning:
+
+How do you ensure your systems are properly scaled for high demand while also keeping resource usage cost-effective? What role does capacity planning play in your SRE strategy?
+Automation Impact on Metrics:
+
+
+
+How has automation, whether through Jenkins or other tools, helped you improve your SRE metrics such as uptime, service availability, and deployment frequency? What specific automated processes have had the most significant impact?
+
+
+
+
+Security & Authentication: Handles authentication (e.g., OAuth, JWT) and security protocols before the request reaches the backend services.
+Rate Limiting and Throttling: Controls traffic flow to protect backend services from being overwhelmed.
+Caching and Load Balancing: Can cache responses to improve performance and load balance traffic across instances.
+Monitoring & Analytics: Provides metrics like response time, request count, error rates, etc.
+When to Choose API Gateway:
+External Traffic Management: If you need a single entry point for managing client (or external) interactions with your microservices.
+Security & Authentication: When you need to handle cross-cutting concerns like authentication, rate limiting, and SSL termination.
+**Simple Internal Communication
+
+
+Focus:
+
+API Gateway: Manages external traffic (north-south) and focuses on client-to-service interactions.
+Service Mesh: Manages internal traffic (east-west) between microservices.
+Use Case:
+
+API Gateway: Suitable for managing and securing external requests, and often the entry point for client requests.
+Service Mesh: Manages service-to-service communication and provides additional layers of control and visibility for microservices architecture.
+Traffic Handling:
+
+API Gateway: Handles routing, security, rate limiting, and monitoring for incoming requests from clients.
+Service Mesh: Focuses on traffic shaping, retries

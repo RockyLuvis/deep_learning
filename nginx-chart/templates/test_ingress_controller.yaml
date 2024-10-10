@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name : {{ .Release.Name }}-resource
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ .Release.name }}-ingress
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.name }}-ingress
+    spec:
+      serviceAccountName: mySA
+      containers:
+        name: {{ .Release.name }}-controller
+        image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.34.1
+
