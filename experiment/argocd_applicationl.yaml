@@ -9,17 +9,13 @@ spec:
     repoURL: https://github.com/RockyLuvis/deep_learning.git
     targetRevision: HEAD
     path: experiment
-  destianation:
-    server: http://kubernetes.default.svc
-    namespace: agrocd
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
 
   syncPolicy:
     syncOptions:
-    -CreateNamespace=true
-
+    - CreateNamespace=true
     automated:
       selfHeal: true
       prune: true
-
-
-
