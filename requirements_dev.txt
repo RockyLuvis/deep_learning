@@ -21,3 +21,4 @@ mypy == 0.971
 
 #-e . # for local deployment
 
+starlette>=0.40.0 # not directly required, pinned by Snyk to avoid a vulnerability
