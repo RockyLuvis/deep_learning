@@ -21,3 +21,4 @@ mypy == 0.971
 
 #-e . # for local deployment
 
+setuptools>=78.1.1 # not directly required, pinned by Snyk to avoid a vulnerability
