@@ -6,3 +6,4 @@ pip-chill # Automatically it will give specific version, if we want specific ver
 wincertstore # To store
 
 -e . # for local deployment
+urllib3>=2.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
