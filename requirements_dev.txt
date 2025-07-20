@@ -21,3 +21,4 @@ mypy == 0.971
 
 #-e . # for local deployment
 
+aiohttp>=3.12.14 # not directly required, pinned by Snyk to avoid a vulnerability
