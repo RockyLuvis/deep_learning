@@ -1,4 +1,4 @@
-bentoml==1.0.10 #
+bentoml==1.4.34 #
 #torchvision   # Pytorch module
 joblib==1.2.0 # 
 tqdm==4.64.1 # progress bar for process for visualization
@@ -21,3 +21,6 @@ mypy == 0.971
 
 #-e . # for local deployment
 
+protobuf>=6.33.5 # not directly required, pinned by Snyk to avoid a vulnerability
+python-multipart>=0.0.22 # not directly required, pinned by Snyk to avoid a vulnerability
+wheel>=0.46.2 # not directly required, pinned by Snyk to avoid a vulnerability
